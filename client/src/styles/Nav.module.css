@@ -1,0 +1,31 @@
+/* Navbar styles */
+.navbar {
+    background-color: #343a40;
+}
+
+/* Navigation link styles */
+.navLink {
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+
+    /* Hover effect for navigation links */
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Style for active navigation link */
+.active {
+    font-weight: bold;
+}
+
+/* Error message style */
+.error {
+    color: red;
+    margin-top: 5px;
+}
+
+/* Loading state style */
+.loading {
+    cursor: wait;
+}
