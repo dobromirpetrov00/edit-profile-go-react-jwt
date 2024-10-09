@@ -1,0 +1,73 @@
+/* Container for forms */
+.formContainer {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Grouping for form elements */
+.formGroup {
+    margin-bottom: 20px;
+}
+
+/* Styling for input fields */
+.input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+/* Container for buttons */
+.buttonGroup {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Base button styles */
+.btn {
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Primary button styles */
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+
+    &:hover {
+        background-color: #0056b3;
+    }
+}
+
+/* Secondary button styles */
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+
+    &:hover {
+        background-color: #5a6268;
+    }
+}
+
+/* Alert container */
+.alert {
+    margin-top: 10px;
+}
+
+/* Success alert */
+.alertSuccess {
+    color: green;
+}
+
+/* Danger alert */
+.alertDanger {
+    color: red;
+}
