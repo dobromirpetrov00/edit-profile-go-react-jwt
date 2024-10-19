@@ -68,19 +68,7 @@ const Nav = (props: {
      * @returns JSX for the menu items
      */
     const renderMenu = () => {
-        if (!props.isAuthenticated) {
-            // Menu items for unauthenticated users
-            return (
-                <ul className="navbar-nav me-auto mb-2 mb-md-0">
-                    <li className="nav-item">
-                        <Link to="/login" className={`${styles.navLink} nav-link active`}>Log in</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to="/register" className={`${styles.navLink} nav-link active`}>Register</Link>
-                    </li>
-                </ul>
-            );
-        } else if (isEditProfilePage) {
+        if (isEditProfilePage) {
             // Menu items for authenticated users on the edit profile page
             return (
                 <ul className="navbar-nav me-auto mb-2 mb-md-0">
