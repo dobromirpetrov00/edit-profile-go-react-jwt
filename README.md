@@ -28,6 +28,7 @@ go mod tidy
 ```bash
 cd client
 npm install
+npm install --save-dev @types/css-modules
 ```
 #### Create database in MySQL:
 - Set up a MySQL database for the application (e.g., use a command like `CREATE DATABASE your_database_name;`).
