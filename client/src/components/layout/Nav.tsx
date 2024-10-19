@@ -11,7 +11,7 @@
  * - `isAuthenticated`: A boolean indicating whether the user is authenticated.
  * - `setIsAuthenticated`: A function to update the authentication state of the user.
  */
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import styles from '../../styles/Nav.module.css';
 import '../../styles/index.css';
@@ -25,6 +25,7 @@ const Nav = (props: {
 }) => {
     // Get the current location
     const location = useLocation();
+    const navigate = useNavigate();
     // Check if the current page is the edit profile page
     const isEditProfilePage = location.pathname === '/edit-profile';
     // State for managing loading status
@@ -61,7 +62,36 @@ const Nav = (props: {
         } finally {
             setLoading(false);
         }
-    };
+  };
+
+  const deleteProfile = async () => {
+    if (!window.confirm('Are you sure you want to delete your profile? This action cannot be undone.')) {
+        return;
+    }
+
+    setLoading(true);
+    setError(null);
+
+    try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to delete profile. Please try again.');
+        }
+
+        props.setName('');
+        props.setIsAuthenticated(false);
+        navigate('/?message=Profile deleted successfully');
+    } catch (err) {
+        setError((err as Error).message);
+    } finally {
+        setLoading(false);
+    }
+  };
 
     /**
      * Renders the appropriate menu items based on authentication status and current page
@@ -71,7 +101,15 @@ const Nav = (props: {
         if (isEditProfilePage) {
             // Menu items for authenticated users on the edit profile page
             return (
-                <ul className="navbar-nav me-auto mb-2 mb-md-0">
+              <ul className="navbar-nav me-auto mb-2 mb-md-0 d-flex flex-row">
+                    <li className="nav-item">
+                        <button
+                            className={`${styles.navLink} nav-link active ${loading ? styles.loading : ''}`}
+                            onClick={deleteProfile}
+                        >
+                            {loading ? 'Deleting...' : 'Delete Profile'}
+                        </button>
+                    </li>
                     <li className="nav-item">
                         <Link
                             to="/"
@@ -81,8 +119,8 @@ const Nav = (props: {
                             {loading ? 'Logging out...' : 'Log out'}
                         </Link>
                     </li>
-                {error && <div className={utils.alertDanger}>{error}</div>}
-            </ul>
+                    {error && <div className={utils.alertDanger}>{error}</div>}
+                </ul>
             )
         }
     };

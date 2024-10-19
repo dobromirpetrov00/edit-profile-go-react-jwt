@@ -10,7 +10,7 @@
 import styles from '../styles/Home.module.css';
 import utils from '../styles/utils.module.css';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Home = ({ name, isAuthenticated, setName, setIsAuthenticated }: {
     name: string;
@@ -19,7 +19,12 @@ const Home = ({ name, isAuthenticated, setName, setIsAuthenticated }: {
     setIsAuthenticated: (isAuthenticated: boolean) => void;
 }) => {
     // State to store the greeting message
-    const [greeting, setGreeting] = useState('');
+  const [greeting, setGreeting] = useState('');
+
+  // Extract success message from URL query parameters
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const successMessage = queryParams.get('message');
 
     useEffect(() => {
         // Set the document title when the component mounts
@@ -58,7 +63,8 @@ const Home = ({ name, isAuthenticated, setName, setIsAuthenticated }: {
 
     return (
         <div className={styles.homeContainer}>
-            <h1 className={utils.fadeIn}>Welcome!</h1>
+          {successMessage && <div className="alert alert-success">{successMessage}</div>}
+          <h1 className={utils.fadeIn}>Welcome!</h1>
             {isAuthenticated ? (
                 <>
                     {/* Display personalized greeting for authenticated users */}

@@ -7,6 +7,9 @@
 .navLink {
     padding: 10px 15px;
     transition: background-color 0.3s;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
 
     /* Hover effect for navigation links */
     &:hover {

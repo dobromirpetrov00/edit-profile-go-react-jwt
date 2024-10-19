@@ -67,6 +67,7 @@ npm start
 - `POST /api/login` - Log in to an existing account
 - `POST /api/logout` - Log out of the current session
 - `GET /api/user` - Retrieve user information
+- `DELETE /api/user` - Delete the current user
 ## Web app endpoints
 
 - `/` - Homepage

@@ -12,6 +12,7 @@ import (
 // - POST /api/logout: Handles user logout
 // - GET /api/user: Retrieves the currently authenticated user
 // - PUT /api/user: Updates the currently authenticated user
+// - DELETE /api/user: Deletes the currently authenticated user
 func Setup(app *fiber.App) {
 	app.Post("/api/register", controllers.Register)
 	app.Post("/api/login", controllers.Login)
@@ -19,4 +20,5 @@ func Setup(app *fiber.App) {
 
 	app.Get("/api/user", controllers.GetUser)
 	app.Put("/api/user", controllers.UpdateUser)
+	app.Delete("/api/user", controllers.DeleteUser)
 }
