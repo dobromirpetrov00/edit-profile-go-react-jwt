@@ -73,7 +73,7 @@ npm start
 - `/` - Homepage
 - `/login` - Login page
 - `/register` - User registration page
-## Feautures
+## Features
 - **User Authentication**: Users can register, log in, and log out.
 - **JWT Authentication**: JSON Web Tokens are used for secure authentication.
 - **Homepage**: After logging in, users are redirected to the homepage.
