@@ -14,8 +14,8 @@ Before running this project, ensure you have the following installed:
 
 #### Clone the repository:
 ```bash
-git clone https://github.com/dobromirpetrov00/edit-profile-go-react-jwt.git
-cd edit-profile-go-react-jwt
+git clone https://github.com/dobromirpetrov00/edit-profile-go-react-jwt-mysql.git
+cd edit-profile-go-react-jwt-mysql
 ```
 
 #### Install dependencies for the back end:
